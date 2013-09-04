@@ -3,17 +3,32 @@
 
 class Person
 
-
-	def takebike(fromstation)
-		fromstation.checkout
+	def initialize
+		@bike = nil
 	end
 
-	def returnbike(tostation)
-		tostation.checkin
+	def rent_bike(fromstation)
+		@bike = fromstation.checkout 
 	end
 
-	def brokenbikealert(bike)
+	def return_bike(tostation)
+		tostation.checkin(@bike)
+		@bike = nil
+	end
+
+	def has_bike?
+		!@bike.nil?
+	end
+
+	
+	def broken_bike_alert(bike)
 		bike.break!
 	end
 
+	def rentedbike
+		@bike
+	end
+
+
 end
+

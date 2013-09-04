@@ -28,8 +28,10 @@ class BikeStation
  	end
 
  	def checkout
+		@checkedbike = @bikes.last
  		@bikes.pop
  		puts "A bike has been checked out."
+ 		return @checkedbike	
  	end
 
  	def bikes

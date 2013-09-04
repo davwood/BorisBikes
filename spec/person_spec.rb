@@ -27,4 +27,11 @@ describe Person do
 	# it 'can return a bike to the same station' do
 
 	# end
+
+	it 'will show that the person has the bike' do
+		
+		
+	end
+
+
 end
