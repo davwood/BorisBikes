@@ -1,14 +1,14 @@
-# require_relative '../lib/bike.rb'
-# require_relative '../lib/bike_station.rb'
+require '../lib/bike.rb'
+require '../lib/bike_station.rb'
 
 class Person
 
-	def initialize
+	def initialize(name)
 		@bike = nil
 	end
 
 	def rent_bike(fromstation)
-		@bike = fromstation.checkout 
+		@bike = fromstation.checkout
 	end
 
 	def return_bike(tostation)
@@ -17,12 +17,16 @@ class Person
 	end
 
 	def has_bike?
-		!@bike.nil?
+		if @bike != nil
+		puts "has bike? #{@has_bike = true}"
+		else 
+		puts false
+		end
 	end
 
-	
 	def broken_bike_alert(bike)
 		bike.break!
+
 	end
 
 	def rentedbike
@@ -31,4 +35,13 @@ class Person
 
 
 end
+
+station = BikeStation.new("Old Street", "bike1", "bike2")
+jay = Person.new('jay')
+jay.has_bike?
+jay.rent_bike(station)
+jay.has_bike?
+jay.broken_bike_alert(Bike.new(20))
+
+
 

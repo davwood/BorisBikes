@@ -13,6 +13,7 @@ class Bike
 
 	def break!
 		@working = false
+		puts "The bike is broken."
 	end
 
 	def fix
@@ -28,5 +29,5 @@ end
 # newbike = Bike.new
 # puts newbike.working?
 
-oldstreet = Bike.new('epsworthhouse')
-puts oldstreet.bikeinfo
+# oldstreet = Bike.new('epsworthhouse')
+# puts oldstreet.bikeinfo
