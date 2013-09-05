@@ -9,19 +9,16 @@ class Person
 
 	def rent_bike(fromstation)
 		@bike = fromstation.checkout
+		
 	end
 
 	def return_bike(tostation)
 		tostation.checkin(@bike)
-		@bike = nil
+
 	end
 
 	def has_bike?
-		if @bike != nil
-		puts "has bike? #{@has_bike = true}"
-		else 
-		puts false
-		end
+		!@bike.nil?
 	end
 
 	def broken_bike_alert(bike)
@@ -42,6 +39,8 @@ jay.has_bike?
 jay.rent_bike(station)
 jay.has_bike?
 jay.broken_bike_alert(Bike.new(20))
+
+
 
 
 

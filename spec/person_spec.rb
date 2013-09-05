@@ -15,9 +15,23 @@ describe Person do
 		aperson.rent_bike(fromstation)
 	end
 
-	it 'can return a bike to a different station' do
-		expect(aperson).to receive(:broken_bike_alert)
+	it 'can return a bike to the station' do
+		# expect(fromstation).to receive(:checkout).and_return(bike)
+		# aperson.rent_bike(fromstation)
+
+		# expect(tostation).to receive(:checkin).with(bike)
+		# aperson.return_bike(tostation) 
+
+		expect(fromstation).to receive(:checkout).and_return(bike)
+		aperson.rent_bike(fromstation)
+		
+		expect(tostation).to receive(:checkin).with(bike)
 		aperson.return_bike(tostation)
+
+	end
+
+	it 'does not have a bike after returning it to the station' do
+		
 	end
 
 	it 'can alert the bike station that a bike is broken' do
