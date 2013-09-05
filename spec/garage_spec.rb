@@ -1,5 +1,5 @@
 require_relative '../lib/garage'
-#require_relative '../lib/van'
+require_relative '../lib/van'
 
 
 describe Garage do
@@ -16,8 +16,9 @@ describe Garage do
 
 	before do
 		@maingarage = Garage.new
-		
+		@van = Van.new
 	end
+
 
 	
 	it 'should receive bike/s from the van' do

@@ -29,6 +29,9 @@ class BikeStation
  	#checkout ALL broken bikes
  	def checkout_broken
 		@broken_bikes = @station_bikes.select {|bike| bike.working? == false }
+ 		
+ 		#leave behind the working bikes.
+ 		@station_bikes.select! {|bike| bike.working? == true}
  		return @broken_bikes
  	end
 
@@ -51,7 +54,6 @@ class BikeStation
  	def station_bikes
  		@station_bikes
  	end
-
  
  end
 

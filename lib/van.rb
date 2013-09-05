@@ -7,11 +7,13 @@ class Van
 	def load_van_at_station(fromstation)
 		@van_bikes.concat(fromstation.checkout_broken)
 		fromstation.clear_broken_bikes
+		puts "The van has collected all the broken bikes from #{fromstation}"
 	end	
 
 	def load_van_at_garage(garage)
 		@van_bikes.concat(garage.garage_bikes)
 		garage.clear_bikes
+		puts "The van has collected all the fixed bikes from #{garage}"
 	end
 
 	def clear_bikes

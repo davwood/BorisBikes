@@ -4,29 +4,44 @@ require_relative '../lib/bike_station'
 
 describe Van do
 	
-	let(:van) { Van.new }
+	
 	let(:bike) { double(:bike) }
-	let(:fromstation) { double(:fromstation)}
+	let(:fromstation) { 
+		double(:fromstation, checkout_broken: [double(:bike)], clear_broken_bikes: nil)
+	}
+	let(:garage) {
+		double(:garage, garage_bikes: [double(:bike)], clear_bikes: nil)
+	}
 	let(:tostation) { double(:tostation)}
-		
-	it 'should take a broken bike from a bike station' do
-		expect(bike).to receive(:working?) {false}
-		expect(fromstation).to receive(:checkout)
+	
 
-		van.collectbrokenbike(bike,fromstation)
-
+	it 'should take broken bikes from a bike station' do
+		van = Van.new
+		expect(fromstation).to receive(:checkout_broken)
+		allow(fromstation).to receive(:clear_broken_bikes)
+		van.load_van_at_station(fromstation)
 	end
 
-	it 'should take the broken bike to the garage' do
-
-	expect(van.drive).to eq("I'm driving to the garage")
-
+	it 'should load van at the garage' do
+		van = Van.new
+		expect(garage).to receive(:garage_bikes)
+		allow(garage).to receive(:clear_bikes)
+		van.load_van_at_garage(garage)
 	end
+
+	it 'should count the number of bikes in the van' do
+		van = Van.new
+		van.load_van_at_station(:fromstation)
+		result = van.countofbikes
+		expect(result).to eq(1)
+	end
+
+
 
 	it 'should return to the bike station' do
 	
 	expect(tostation).to receive(:checkin) {"I'm returning to bike station"}
-	van.drop(tostation)
+	@van.drop(tostation)
 	end
 
 	# it 'should return a statement about where it\'s going' do
