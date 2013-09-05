@@ -24,7 +24,6 @@ describe Van do
 	end
 
 	it 'should return to the bike station' do
-
 	
 	expect(tostation).to receive(:checkin) {"I'm returning to bike station"}
 	van.drop(tostation)

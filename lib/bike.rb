@@ -1,10 +1,8 @@
 class Bike
 
-	def initialize(bikeid)
+	def initialize(id)
 		@working = true
-		@bikeinfo = {:bikeid => bikeid,
-					:checkouttime => Time.new, 
-					:checkintime => Time.new}
+		@id = id
 	end
 
 	def working?
@@ -23,10 +21,11 @@ class Bike
 		@bikeinfo
 	end
 
+	def id
+	 	@id
+	end
 end
 
 # newbike = Bike.new
 # puts newbike.working?
 
-oldstreet = Bike.new('epsworthhouse')
-puts oldstreet.bikeinfo
